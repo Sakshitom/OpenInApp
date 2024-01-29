@@ -139,83 +139,85 @@ const Upload = () => {
             Uploads
           </div>
         )}
-        <div className="bg-gray-200 px-4 pb-4 rounded-md">
-          {uploadedFiles.length > 0 && (
-            <div className="w-full bg-gray-200 mt-8 p-4 rounded-md">
-              <div className="grid grid-cols-5 gap-4">
-                <div className="font-semibold">S.No.</div>
-                <div className="font-semibold">Links</div>
-                <div className="font-semibold">Prefix</div>
-                <div className="font-semibold">Add Tags</div>
-                <div className="font-semibold">Selected Tags</div>
+        {uploadedFiles.length > 0 && (
+          <div className="bg-gray-200 px-4 pb-4 rounded-md">
+            {uploadedFiles.length > 0 && (
+              <div className="w-full bg-gray-200 mt-8 p-4 rounded-md">
+                <div className="grid grid-cols-5 gap-4">
+                  <div className="font-semibold">S.No.</div>
+                  <div className="font-semibold">Links</div>
+                  <div className="font-semibold">Prefix</div>
+                  <div className="font-semibold">Add Tags</div>
+                  <div className="font-semibold">Selected Tags</div>
+                </div>
               </div>
-            </div>
-          )}
-          {uploadedFiles.map((file, index) => (
-            <div
-              key={index}
-              className="w-full bg-white mt-8 py-4 px-2 rounded-md"
-            >
-              <div className="grid grid-cols-5 gap-4">
-                {/* name */}
-                <div>{index + 1}</div>
-                <div>
-                  <a
-                    href={URL.createObjectURL(file.file)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-blue-500"
-                  >
-                    {file.file.name}
-                  </a>
-                </div>
-                {/* prefix */}
-                <div>prefixSample</div>
-                {/* tags */}
-                <div>
-                  <select
-                    value={selectedDropdownTag}
-                    onChange={handleDropdownChange}
-                    className="border border-gray-400 rounded-md px-2 py-1"
-                  >
-                    <option value="" disabled>
-                      Select Tag
-                    </option>
-                    {randomTags.map((tag) => (
-                      <option key={tag} value={tag}>
-                        {tag}
-                      </option>
-                    ))}
-                  </select>
-                  <button
-                    className="ml-2 bg-indigo-500 text-white px-2 py-1 rounded"
-                    onClick={handleAddDropdownTag}
-                    disabled={tags.includes(selectedDropdownTag)}
-                  >
-                    Add
-                  </button>
-                </div>
-                {/* tags selected */}
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag, tagIndex) => (
-                    <div
-                      key={tagIndex}
-                      className="bg-blue-500 text-white px-2 py-1 rounded-md flex items-center"
+            )}
+            {uploadedFiles.map((file, index) => (
+              <div
+                key={index}
+                className="w-full bg-white mt-8 py-4 px-2 rounded-md"
+              >
+                <div className="grid grid-cols-5 gap-4">
+                  {/* name */}
+                  <div>{index + 1}</div>
+                  <div>
+                    <a
+                      href={URL.createObjectURL(file.file)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-blue-500"
                     >
-                      {tag}
-                      <span
-                        className="ml-2 cursor-pointer"
-                        onClick={() => handleTagRemove(index, tagIndex)}
+                      {file.file.name}
+                    </a>
+                  </div>
+                  {/* prefix */}
+                  <div>prefixSample</div>
+                  {/* tags */}
+                  <div>
+                    <select
+                      value={selectedDropdownTag}
+                      onChange={handleDropdownChange}
+                      className="border border-gray-400 rounded-md px-2 py-1"
+                    >
+                      <option value="" disabled>
+                        Select Tag
+                      </option>
+                      {randomTags.map((tag) => (
+                        <option key={tag} value={tag}>
+                          {tag}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      className="ml-2 bg-indigo-500 text-white px-2 py-1 rounded"
+                      onClick={handleAddDropdownTag}
+                      disabled={tags.includes(selectedDropdownTag)}
+                    >
+                      Add
+                    </button>
+                  </div>
+                  {/* tags selected */}
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((tag, tagIndex) => (
+                      <div
+                        key={tagIndex}
+                        className="bg-blue-500 text-white px-2 py-1 rounded-md flex items-center"
                       >
-                        &times;
-                      </span>
-                    </div>
-                  ))}
+                        {tag}
+                        <span
+                          className="ml-2 cursor-pointer"
+                          onClick={() => handleTagRemove(index, tagIndex)}
+                        >
+                          &times;
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
