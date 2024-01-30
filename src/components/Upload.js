@@ -27,6 +27,7 @@ const Upload = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (selectedFiles.length > 0) {
@@ -127,7 +128,7 @@ const Upload = () => {
     <div className="">
       {/* Mobile */}
       <div className="md:hidden flex flex-col h-full w-full">
-        <MobileNav />
+        <MobileNav open={open} setOpen={setOpen} />
         <div className="w-full h-auto pt-[28px] bg-slate-50">
           <div className="text-slate-950 pl-[32px] pb-[24px] font-bold text-base">
             Upload CSV
@@ -181,7 +182,7 @@ const Upload = () => {
             </div>
           </div>
 
-          <div className="px-[84px] pb-4 bg-black">
+          <div className="px-[84px] pb-4">
             {uploadedFiles.length > 0 && (
               <div className="text-black text-2xl font-semibold leading-loose">
                 Uploads
