@@ -144,11 +144,11 @@ const Loginpage = () => {
               />
               <div className=" mx-6 py-4 text-[#346BD4]">Forgot password?</div>
               <div className="py-2">
-                <a href="/uploads">
-                  <button className="bg-[#605BFF] text-white justify-center mx-6 p-2 w-[400px] h-[45px] rounded text-bold">
+                <Link to="/uploads">
+                  <button className="bg-[#605BFF] text-white justify-center px-3 p-2 w-full h-[45px] rounded text-bold">
                     Sign In
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="flex flex-row items-center justify-center gap-1 p-2">
