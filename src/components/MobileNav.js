@@ -1,5 +1,6 @@
 import React from "react";
-import Logo from "../assets/Subtract.svg";
+import Logo from "../assets/SubtractMobile.svg";
+import { IoClose } from "react-icons/io5";
 import DashboardIcon from "../assets/NavbarIcons/Category.svg";
 import UploadIcon from "../assets/NavbarIcons/Chart.svg";
 import InvoiceIcon from "../assets/NavbarIcons/Ticket.svg";
@@ -15,6 +16,10 @@ import CalenderActiveIcon from "../assets/NavbarIcons/CalendarActive.svg";
 import NotificationActiveIcon from "../assets/NavbarIcons/NotificationActive.svg";
 import SettingActiveIcon from "../assets/NavbarIcons/SettingActive.svg";
 import DashboardActiveIcon from "../assets/NavbarIcons/CategoryActive.svg";
+import { GiHamburgerMenu } from "react-icons/gi";
+import BellIcon from "../assets/BellIcon.svg";
+import Profile from "../assets/ProfilePhoto.png";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const menuItems = [
   { label: "Dashboard", icon: DashboardIcon, activeicon: DashboardActiveIcon },
@@ -30,32 +35,55 @@ const menuItems = [
   { label: "Setting", icon: SettingIcon, activeicon: SettingActiveIcon },
 ];
 
-const Navbar = () => {
+const MobileNav = ({ open, setOpen }) => {
   const [activeItem, setActiveItem] = useState(0);
 
   const handleItemClick = (index) => {
     setActiveItem(index);
   };
+
+  const handleClose = () => {
+    setOpen(!open);
+  };
   return (
-    <div className="">
-      {/* desktop */}
-      <div className="w-[218px] h-screen hidden md:block border-black ">
-        <div className="flex flex-col  py-[51px]">
-          {/* logo div */}
-          <div className="flex w-full justify-center items-center pb-[50px]   ">
-            <div className="">
+    <>
+      {!open && (
+        <div className="flex justify-between py-[27px] h-[80px] px-[20px] ">
+          <div className="flex items-center space-x-[16px]">
+            <button onClick={() => setOpen(!open)}>
+              <RxHamburgerMenu size={25} />
+            </button>
+            <div className="flex space-x-[11px]">
               <img src={Logo} alt="logo" />
-            </div>
-            <div className="text-slate-950 text-2xl font-semibold pl-[15px]">
-              Base
+              <div className="text-slate-950 text-xl font-semibold">Base</div>
             </div>
           </div>
-          {/* navbar elements div */}
-          <div className="flex flex-col space-y-[38px] text-zinc-400 text-base font-semibold capitalize ">
+          <div className="flex items-center space-x-[27px]">
+            <img src={BellIcon} alt="bell"></img>
+            <img
+              src={Profile}
+              alt=" description"
+              class="rounded-full h-9 w-9 object-cover"
+            />
+          </div>
+        </div>
+      )}
+      {open && (
+        <div className="w-full fixed inset-0 z-50 bg-white h-screen">
+          <div className="text-black flex justify-between pt-[28px] px-[21px]">
+            <div className="flex space-x-[11px]">
+              <img src={Logo} alt="/" />
+              <div className="text-slate-950 text-xl font-semibold">Base</div>
+            </div>
+            <button onClick={handleClose}>
+              <IoClose size={20} style={{ color: "#999CA0" }} />
+            </button>
+          </div>
+          <div className="flex flex-col space-y-[38px] pt-[52px] text-zinc-400 text-base font-semibold capitalize">
             {menuItems.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-center space-x-[14px] pl-[31px] py-2 cursor-pointer ${
+                className={`flex items-center space-x-[14px] pl-[33px]   py-2 cursor-pointer ${
                   activeItem === index
                     ? "text-indigo-500 font-bold bg-gradient-to-r from-indigo-100 to-white to-20%"
                     : ""
@@ -74,9 +102,9 @@ const Navbar = () => {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
-export default Navbar;
+export default MobileNav;

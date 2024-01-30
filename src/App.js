@@ -1,11 +1,14 @@
-import Navbar from "./components/Navbar";
+import Loginpage from "./components/Loginpage";
 import Upload from "./components/Upload";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex w-full h-full">
-      <Navbar />
-      <Upload />
+    <div>
+      <Routes>
+        <Route path="/" element={<Loginpage />} />
+        <Route path="/uploads" element={<Upload />} />
+      </Routes>
     </div>
   );
 }
