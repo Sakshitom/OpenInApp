@@ -91,9 +91,19 @@ const Loginpage = () => {
           </div>
         </div>
         {/* desktop vala part */}
+
         <div className=" hidden md:flex flex-col h-screen justify-between w-[700px] bg-[#605BFF] ">
-          <div className="p-10">
-            <img src={logowhite} alt="logowhite" />
+          <div className="relative p-4">
+            <img
+              className=" absolute p-9 top-0 left-1"
+              src={logowhite}
+              alt="logowhite"
+            />
+            <img
+              className="cursor-pointer p-9 absolute top-6 left-0 "
+              src={vector}
+              alt="vector"
+            />
           </div>
           <div className="flex flex-col items-center justify-center  text-white text-6xl font-montserrat font-bold">
             BASE
@@ -105,7 +115,7 @@ const Loginpage = () => {
             <img src={discord} alt="discord" />
           </div>
         </div>
-        {/* desktop vala */}
+        {/* right side vala part */}
         <div className="hidden md:flex flex-col mt-[150px] mx-[100px] items-start justify-start">
           <div className="font-bold font-montserrat text-4xl">Sign In</div>
           <div className="font-semibold font-Lato py-4">
@@ -126,7 +136,7 @@ const Loginpage = () => {
             </div>
           </div>
           {/* email address vala part */}
-          <div className=" flex flex-col flex-shrink-0 mt-5 rounded">
+          <div className=" flex flex-col flex-shrink-0 mt-5 rounded ">
             <div className="bg-white rounded p-3 ">
               <div className="py-4 mx-6">Email address</div>
               <input
